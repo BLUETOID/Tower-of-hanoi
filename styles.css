@@ -1,0 +1,376 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    overflow: hidden; /* remove page scrollbar */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a2e;
+    color: #eaeaea;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+}
+
+.container {
+    width: 100%;
+    max-width: 1000px;
+    padding: 18px 20px;
+    height: 100vh; /* fill viewport */
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 1.9rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group label {
+    font-size: 0.95rem;
+    color: #b8b8b8;
+}
+
+select {
+    padding: 10px 15px;
+    font-size: 0.95rem;
+    border: 2px solid #3a3a5c;
+    border-radius: 6px;
+    background-color: #252542;
+    color: #eaeaea;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+select:hover {
+    border-color: #5a5a8c;
+}
+
+select:focus {
+    border-color: #6c63ff;
+}
+
+.button-group {
+    display: flex;
+    gap: 12px;
+}
+
+button {
+    padding: 12px 28px;
+    font-size: 1rem;
+    font-weight: 600;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.1s, opacity 0.2s;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+#startBtn {
+    background-color: #4a9d4a;
+    color: #ffffff;
+}
+
+#startBtn:hover:not(:disabled) {
+    background-color: #3d8b3d;
+}
+
+#stepBtn {
+    background-color: #6c63ff;
+    color: #ffffff;
+}
+
+#stepBtn:hover:not(:disabled) {
+    background-color: #584bd6;
+}
+
+#resetBtn {
+    background-color: #c94c4c;
+    color: #ffffff;
+}
+
+#resetBtn:hover:not(:disabled) {
+    background-color: #b33c3c;
+}
+
+.info-panel {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+.info-panel span {
+    color: #9a9ab8;
+}
+
+.info-panel strong {
+    color: #ffffff;
+    font-size: 1.1rem;
+}
+
+.game-area {
+    background-color: #16162a;
+    border-radius: 12px;
+    padding: 18px 14px;
+    margin-bottom: 8px;
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.towers-container {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: calc(32vh - 100px); /* reduced so code panel can grow */
+    min-height: 120px;
+    max-height: 260px;
+    position: relative;
+    transition: height 0.12s ease;
+}
+
+.tower {
+    position: relative;
+    width: 160px; /* slightly narrower */
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.tower-rod {
+    position: absolute;
+    bottom: 20px;
+    width: 8px;
+    height: 160px; /* reduced height */
+    background-color: #4a4a6a;
+    border-radius: 4px 4px 0 0;
+}
+
+.tower-base {
+    position: absolute;
+    bottom: 10px;
+    width: 150px; /* reduced width */
+    height: 10px;
+    background-color: #4a4a6a;
+    border-radius: 6px;
+}
+
+.tower-label {
+    position: absolute;
+    bottom: -25px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #7a7a9a;
+}
+
+.disks-container {
+    position: absolute;
+    bottom: 22px;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    width: 100%;
+}
+
+.disk {
+    height: 24px;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    position: relative;
+    transition: all 0.15s ease-out;
+}
+
+.disk.moving {
+    position: fixed;
+    z-index: 100;
+    transition: all 0.25s ease-in-out;
+}
+
+.status {
+    text-align: center;
+    font-size: 1rem;
+    color: #7a7a9a;
+    min-height: 24px;
+}
+
+.status.complete {
+    color: #4a9d4a;
+    font-weight: 600;
+}
+
+/* Debug panel: code view and call stack */
+.debug-panel {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    align-items: flex-start;
+    margin: 12px 0 6px;
+}
+
+.code-block {
+    background-color: #0f1020;
+    color: #e6e6ff;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px 10px;
+    border-radius: 8px;
+    width: 520px;
+    max-width: 100%;
+    box-shadow: none;
+    line-height: 1.35;
+    font-size: 0.86rem;
+    max-height: 36vh; /* increased so full C++ function fits */
+    overflow: auto; /* allow internal scroll if content exceeds */
+}
+
+.code-line {
+    padding: 4px 8px;
+    white-space: pre;
+}
+
+.code-line.active {
+    background-color: #2a2a44;
+    color: #ffffff;
+    border-left: 4px solid #6c63ff;
+}
+
+.call-stack {
+    width: 260px;
+    background-color: #0f1020;
+    padding: 10px;
+    border-radius: 8px;
+    color: #cfcfe8;
+    max-height: 22vh;
+    overflow: auto; /* internal scroll for long stacks */
+}
+
+.call-stack-title {
+    font-weight: 700;
+    margin-bottom: 6px;
+    color: #9a9ab8;
+}
+
+.call-frames {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.call-frame {
+    background-color: #16162a;
+    padding: 8px;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    color: #eaeaea;
+}
+
+.call-frame.top {
+    border: 2px solid #6c63ff;
+}
+
+@media (max-width: 900px) {
+    .debug-panel {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .code-block { width: 100%; }
+    .call-stack { width: 100%; }
+}
+
+/* Disk colors - solid, professional palette */
+.disk-1 { background-color: #e74c3c; width: 40px; }
+.disk-2 { background-color: #e67e22; width: 60px; }
+.disk-3 { background-color: #f1c40f; width: 80px; }
+.disk-4 { background-color: #2ecc71; width: 100px; }
+.disk-5 { background-color: #3498db; width: 120px; }
+.disk-6 { background-color: #9b59b6; width: 140px; }
+.disk-7 { background-color: #1abc9c; width: 160px; }
+
+@media (max-width: 768px) {
+    .container {
+        padding: 12px 10px;
+    }
+    
+    h1 {
+        font-size: 1.0rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+    }
+    
+    .towers-container {
+        height: calc(34vh - 80px);
+    }
+    
+    .tower {
+        width: 90px;
+    }
+    
+    .tower-base {
+        width: 78px;
+    }
+    
+    .tower-rod {
+        height: 120px;
+    }
+    
+    .disk-1 { width: 24px; }
+    .disk-2 { width: 34px; }
+    .disk-3 { width: 44px; }
+    .disk-4 { width: 54px; }
+    .disk-5 { width: 64px; }
+    .disk-6 { width: 74px; }
+    .disk-7 { width: 84px; }
+    
+    .disk {
+        height: 14px;
+    }
+
+    .debug-panel { flex-direction: column; gap: 10px; }
+    .code-block { max-height: 26vh; }
+    .call-stack { max-height: 26vh; }
+}

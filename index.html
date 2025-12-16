@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tower of Hanoi — Interactive Animation & Visual Explanation</title>
+
+    <!-- SEO meta -->
+    <meta name="description" content="Interactive Tower of Hanoi animation with step-by-step visual explanation, recursive call stack viewer, and C++ implementation. Learn how the algorithm works visually.">
+    <meta name="keywords" content="Tower of Hanoi, Tower of Hanoi animation, algorithm visualization, recursive algorithm, C++ Tower of Hanoi, puzzle animation">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://example.com/"> <!-- update with your site URL -->
+
+    <!-- Open Graph / Social -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Tower of Hanoi — Interactive Animation & Visual Explanation">
+    <meta property="og:description" content="Interactive Tower of Hanoi animation with step-by-step visual explanation, recursive call stack viewer, and C++ implementation. Learn how the algorithm works visually.">
+    <meta property="og:url" content="https://example.com/">
+    <meta property="og:image" content="https://example.com/og-image.png"> <!-- replace with real image -->
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Tower of Hanoi — Interactive Animation">
+    <meta name="twitter:description" content="Step-by-step Tower of Hanoi animation with code and call-stack view.">
+    <meta name="twitter:image" content="https://example.com/og-image.png">
+
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "Tower of Hanoi — Interactive Animation",
+      "url": "https://example.com/",
+      "description": "Interactive Tower of Hanoi animation with step-by-step visual explanation, recursive call stack viewer, and C++ implementation.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://example.com/?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Tower of Hanoi</h1>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="diskCount">Number of Disks:</label>
+                <select id="diskCount">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5" selected>5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                </select>
+            </div>
+            
+            <div class="control-group">
+                <label for="speed">Speed:</label>
+                <select id="speed">
+                    <option value="2500">Slow</option>
+                    <option value="1200" selected>Medium</option>
+                    <option value="600">Fast</option>
+                    <option value="300">Very Fast</option>
+                </select>
+            </div>
+            
+            <div class="button-group">
+                <button id="startBtn">Start</button>
+                <button id="stepBtn">Step</button>
+                <button id="resetBtn">Reset</button>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <span>Moves: <strong id="moveCount">0</strong></span>
+            <span>Minimum Moves: <strong id="minMoves">31</strong></span>
+        </div>
+        
+        <div class="game-area">
+            <div class="towers-container">
+                <div class="tower" id="tower-0">
+                    <div class="tower-base"></div>
+                    <div class="tower-rod"></div>
+                    <div class="tower-label">A</div>
+                    <div class="disks-container"></div>
+                </div>
+                
+                <div class="tower" id="tower-1">
+                    <div class="tower-base"></div>
+                    <div class="tower-rod"></div>
+                    <div class="tower-label">B</div>
+                    <div class="disks-container"></div>
+                </div>
+                
+                <div class="tower" id="tower-2">
+                    <div class="tower-base"></div>
+                    <div class="tower-rod"></div>
+                    <div class="tower-label">C</div>
+                    <div class="disks-container"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="debug-panel">
+            <div class="code-block" id="codeBlock" aria-hidden="false"></div>
+            <div class="call-stack" id="callStack">
+                <div class="call-stack-title">Call Stack</div>
+                <div class="call-frames"></div>
+            </div>
+        </div>
+
+        <div class="status" id="status">Click Start to begin the animation</div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
