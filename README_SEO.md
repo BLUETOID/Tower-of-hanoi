@@ -1,7 +1,7 @@
 SEO & Publishing checklist for Tower of Hanoi demo
 
 1) Replace placeholder URLs
-   - The project has been updated for GitHub Pages: `https://BLUETOID.github.io/tower-of-hanoi/`. If you host elsewhere, replace with your production domain.
+   - The project has been updated for GitHub Pages: `https://BLUETOID.github.io/Tower-of-hanoi/`. If you host elsewhere, replace with your production domain.
 
 2) Verify Meta Tags
    - `title` and `meta description` are set in `index.html`. Adjust to target desired keywords such as "Tower of Hanoi animation", "algorithm visualization", "C++ Tower of Hanoi".

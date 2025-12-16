@@ -4,4 +4,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://BLUETOID.github.io/tower-of-hanoi/sitemap.xml
+Sitemap: https://BLUETOID.github.io/Tower-of-hanoi/sitemap.xml
