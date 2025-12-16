@@ -1,7 +1,7 @@
 # robots.txt for Tower of Hanoi demo site
-# Replace example.com with your real domain before publishing
+# Updated for GitHub Pages
 
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://BLUETOID.github.io/tower-of-hanoi/sitemap.xml
