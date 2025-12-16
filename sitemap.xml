@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <!-- Update <loc> with your production URLs -->
   <url>
     <loc>https://BLUETOID.github.io/Tower-of-hanoi/</loc>
     <changefreq>monthly</changefreq>
